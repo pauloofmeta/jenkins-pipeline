@@ -1,0 +1,25 @@
+{
+  "name": "api-product",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ciandt-pauloss/api-product.git",
+  "author": "Paulo Henrique Sousa da Silva",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./src/index",
+    "test": "jest"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
+}
