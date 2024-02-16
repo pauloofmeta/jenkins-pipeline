@@ -15,6 +15,8 @@ services:
       - jenkins_conf:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
 
   sonarqube:
     image: sonarqube:8.9.10-community
@@ -31,6 +33,8 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
 
   db:
     image: postgres:latest
@@ -42,6 +46,8 @@ services:
       - sonarqube_db:/var/lib/postgresql
       # This needs explicit mapping due to https://github.com/docker-library/postgres/blob/4e48e3228a30763913ece952c611e5e9b95c8759/Dockerfile.template#L52
       - postgresql_data:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
 
   agent:
     image: jenkins/ssh-agent:jdk11
@@ -52,7 +58,10 @@ services:
       - 22
     environment:
       - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8MCVwk5XFJ3omICdFBFMxTt1bHJIuKf9uPoFTDNOB8ykub6tGs1yEihCfsDCzkmoRkwcPMlcrpsLMZ05G71Ud3lreY2typizdBjXvLsgRzYE93ZnjRej8oP+za87LcfTQiLW2VxJ4rJd9VF9muMgZajf9k2C15LA+dz/0s3ZTWO6ahlCAb8sdN+Wkj2z7u8DaVgg88qf8qqN4fxemvloql2t/6AAR+S+/5/NTK+sNKhW9cXRJyHXxOEo68mCiI5mTHS5MacY8C57NvtuhwYdQfYRY81GOhH062bE28IPEFyQquSeB8tikfbq0qKQAGgz7S2TyORlfDuo+3qThI1rDGdZe4tYksljS+/Mm5ZV9ZJ9LurnTi606qAYsjABYWYHFOBaz4JfpWZZa9BInGcQzVN61dm6gGdlzYzwYaWI3uboF59vIXcmN+z7psOFDuDsdL9ZnChlu6DSp+LRUq0E2t2hHOvXoqksYqwMUoQK+X9r5uMSh/b3r4YK+YC/QmYs= pauloss@WNB035928BHZ
-
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      
 volumes:
   jenkins_conf:
   postgresql_data:
