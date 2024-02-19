@@ -5,7 +5,7 @@ def call(body) {
     body()
 
     timeout(60) {
-        node(config.nodeLabel) {
+        node("${config.nodeLabel}") {
             stage('Install Dependencies') {
                 nodejs(nodeJSInstallationName: config.nodejsVersion) {
                     sh 'npm install -g yarn'
