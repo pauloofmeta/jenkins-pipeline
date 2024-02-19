@@ -4,13 +4,11 @@ def call(body) {
     body.delegate = config
     body()
 
-    timeout(60) {
-        node("${config.nodeLabel}") {
-            stage('Install Dependencies') {
-                nodejs(nodeJSInstallationName: config.nodejsVersion) {
-                    sh 'npm install -g yarn'
-                    sh 'yarn install'
-                }
+    node {
+        stage('Install Dependencies') {
+            nodejs(nodeJSInstallationName: config.nodejsVersion) {
+                sh 'npm install -g yarn'
+                sh 'yarn install'
             }
         }
     }
