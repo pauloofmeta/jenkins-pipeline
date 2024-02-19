@@ -5,11 +5,13 @@ def call(body) {
     body()
 
     timeout(60) {
-       stage('Install Dependencies') {
-           nodejs(nodeJSInstallationName: config.nodejsVersion) {
-                sh 'npm install -g yarn'
-                sh 'yarn install'
+        node(config.nodeLabel) {
+            stage('Install Dependencies') {
+                nodejs(nodeJSInstallationName: config.nodejsVersion) {
+                    sh 'npm install -g yarn'
+                    sh 'yarn install'
+                }
             }
-       }
+        }
     }
 }
