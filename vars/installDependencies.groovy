@@ -6,7 +6,7 @@ def call(body) {
 
     node {
         stage('Install Dependencies') {
-            nodejs(nodeJSInstallationName: config.nodejsVersion) {
+            nodejs(nodeJSInstallationName: "${config.nodejsVersion}") {
                 sh 'npm install -g yarn'
                 sh 'yarn install'
             }
