@@ -6,7 +6,10 @@ def call(body) {
 
     node {
         stage('Build Image') {
-            sh 'docker build -t ${config.imageName} .'
+            packageJSON = readJSON file: 'package.json'
+            version = "${packageJSON.version}-${currentBuild.number}"
+            echo "Building image with version ${version}"
+            sh "docker build -t ${config.imageName}:${version} ."
         }
     }
 }
