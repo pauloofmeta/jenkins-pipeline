@@ -4,39 +4,34 @@
 
 ## Description
 
-This project is an example of implementing a pipeline using Jenkins for a Node.js application. It contains the following steps:
+This shared library provides a set of reusable functions and utilities for building and deploying Node.js applications using Jenkins. It aims to simplify the process of setting up continuous integration (CI) pipelines for Node.js projects.
 
-1. Install dependencies
-2. Test
-3. Build
-4. Quality gate
-5. Build Docker image of the project
+The library includes predefined stages and steps for common tasks such as installing dependencies, running tests, building the application, and deploying it to various environments. It also provides integration with popular Node.js tools and frameworks, making it easy to incorporate best practices into your CI workflows.
 
-## Table of Contents
+By using this shared library, you can streamline your Jenkins pipelines, reduce duplication of code, and ensure consistent and reliable builds for your Node.js applications.
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+## Features
 
-## Installation
+- Easy setup and configuration of Node.js CI pipelines
+- Predefined stages and steps for common Node.js tasks
+- Integration with popular Node.js tools and frameworks
+- Customizable and extensible to fit your specific project requirements
+- Well-documented and actively maintained
 
-To get started with this project, follow the steps below:
+## Usage
 
-1. Clone the repository to your local machine.
-2. Requires docker installed.
-3. Runing containers:
+To use this shared library in your Jenkins pipeline for a Node.js application, follow these steps:
 
-    ```shell
-    docker compose up -d
-    ```
-4. Install the required dependencies by running the following command:
+1. Install the necessary dependencies and plugins in your Jenkins instance.
+2. Configure your Jenkins pipeline to load the shared library.
+3. Use the provided functions and utilities in your pipeline script to define the stages and steps for your Node.js CI workflow.
 
-   ```shell
-   cd ./api-product
-   yarn
-   ```
+For detailed instructions and examples, refer to the documentation in the repository.
+
+## Contributing
+
+Contributions to this shared library are welcome! If you have any ideas, bug reports, or feature requests, please open an issue or submit a pull request on the GitHub repository.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This shared library is licensed under the [MIT License](LICENSE).
