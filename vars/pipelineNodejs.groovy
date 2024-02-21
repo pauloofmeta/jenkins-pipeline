@@ -15,19 +15,27 @@ def call(body) {
             }
 
             stage('Install Dependencies') {
-                installDependencies(config.nodejsVersion)
+                steps {
+                    installDependencies(config.nodejsVersion)
+                }
             }
 
             stage('Build and Tests') {
-                buildAndTests(config.nodejsVersion)
+                steps {
+                    buildAndTests(config.nodejsVersion)
+                }
             }
 
             stage('Quality Gate') {
-                qualityGate()
+                steps {
+                    qualityGate()
+                }
             }
 
             stage('Build Image') {
-                buildImage(config.imageName)
+                steps {
+                    buildImage(config.imageName)
+                }
             }
         }
     }
