@@ -4,7 +4,7 @@ def call(body) {
     body.delegate = config
     body()
 
-    checkout
+    checkout()
 
     installDependencies {
         nodejsVersion = config.nodejsVersion
@@ -14,7 +14,7 @@ def call(body) {
         nodejsVersion = config.nodejsVersion
     }
 
-    qualityGate
+    qualityGate()
 
     buildImage {
         imageName = config.imageName
