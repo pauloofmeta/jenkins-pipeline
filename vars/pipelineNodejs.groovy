@@ -4,8 +4,6 @@ def call(body) {
     body.delegate = config
     body()
 
-    checkout()
-
     installDependencies {
         nodejsVersion = config.nodejsVersion
     }
