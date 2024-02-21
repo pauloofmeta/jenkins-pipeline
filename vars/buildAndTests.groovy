@@ -7,7 +7,6 @@ def call(body) {
     node {
         stage('Build and Tests') {
             nodejs(nodeJSInstallationName: "${config.nodejsVersion}") {
-                sh 'yarn build'
                 sh 'yarn test --coverage'
             }
         }
