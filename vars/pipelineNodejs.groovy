@@ -32,8 +32,8 @@ def call(body) {
                 }
                 steps {
                     script {
-                        qualityGate.sonarScanner()
-                        qualityGate.waitForQualityGate()
+                        qualityGate.sonarScanner(config.nodejsVersion)
+                        qualityGate.qualityGateCheck()
                     }
                     
                 }
