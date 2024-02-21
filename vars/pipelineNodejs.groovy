@@ -28,8 +28,11 @@ def call(body) {
 
             stage('Quality Gate') {
                 steps {
-                    qualityGate.sonarScanner()
-                    qualityGate.waitForQualityGate()
+                    script {
+                        qualityGate.sonarScanner()
+                        qualityGate.waitForQualityGate()
+                    }
+                    
                 }
             }
 
