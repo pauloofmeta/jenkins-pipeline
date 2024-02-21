@@ -4,17 +4,31 @@ def call(body) {
     body.delegate = config
     body()
 
-    installDependencies {
-        nodejsVersion = config.nodejsVersion
-    }
+    pipeline {
+        agent any
 
-    buildAndTests {
-        nodejsVersion = config.nodejsVersion
-    }
+        stages {
+            stage('Checkout') {
+                steps {
+                    checkout scm
+                }
+            }
 
-    qualityGate()
+            stage('Install Dependencies') {
+                installDependencies(config.nodejsVersion)
+            }
 
-    buildImage {
-        imageName = config.imageName
+            stage('Build and Tests') {
+                buildAndTests(config.nodejsVersion)
+            }
+
+            stage('Quality Gate') {
+                qualityGate()
+            }
+
+            stage('Build Image') {
+                buildImage(config.imageName)
+            }
+        }
     }
 }

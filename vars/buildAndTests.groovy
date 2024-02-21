@@ -1,14 +1,5 @@
-def call(body) {
-    def config = [:]
-    body.resolveStrategy = Closure.DELEGATE_FIRST
-    body.delegate = config
-    body()
-
-    node {
-        stage('Build and Tests') {
-            nodejs(nodeJSInstallationName: "${config.nodejsVersion}") {
-                sh 'yarn test --coverage'
-            }
-        }
+def call(String nodejsVersion) {
+    nodejs(nodeJSInstallationName: "${nodejsVersion}") {
+        sh 'yarn test --coverage'
     }
 }
