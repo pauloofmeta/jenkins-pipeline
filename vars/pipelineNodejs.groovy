@@ -27,6 +27,9 @@ def call(body) {
             }
 
             stage('Quality Gate') {
+                environment {
+                    SCANNER_HOME = tool 'SonarQubeScanner';    
+                }
                 steps {
                     script {
                         qualityGate.sonarScanner()
