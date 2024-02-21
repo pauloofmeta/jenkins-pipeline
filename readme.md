@@ -34,4 +34,4 @@ Contributions to this shared library are welcome! If you have any ideas, bug rep
 
 ## License
 
-This shared library is licensed under the [MIT License](LICENSE).
+This shared library is licensed under the [MIT License](LICENSE)!
